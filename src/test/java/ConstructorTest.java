@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class ConstructorTest extends BaseTest {
     MainPage mainPage = new MainPage(getDriver());
 
-   @Before
+    @Before
     public void openPage() {
         openUrl();
     }
@@ -20,25 +20,21 @@ public class ConstructorTest extends BaseTest {
     public void clickOnBread() {
         mainPage.clickSauceButton();
         mainPage.clickBreadButton();
-        assertEquals("Краторная булка N-200i", mainPage.getTextCratorBread());
+        assertEquals(mainPage.getTextSectionBreads(), mainPage.getCurrentMenu());
     }
 
     @Test
     @DisplayName("Проверка перехода на вкладку Соусы")
     public void clickOnSauce() {
         mainPage.clickSauceButton();
-        assertEquals("Соус традиционный галактический", mainPage.getTextGalaxySauce());
+        assertEquals(mainPage.getTextSectionSauces(), mainPage.getCurrentMenu());
     }
 
     @Test
     @DisplayName("Проверка перехода на вкладку Начинки")
     public void clickOnFiling() {
         mainPage.clickFilingsButton();
-        assertEquals("Филе Люминесцентного тетраодонтимформа", mainPage.getTextLuminFiling());
+        assertEquals(mainPage.getTextSectionfillings(), mainPage.getCurrentMenu());
     }
 
-   @After
-    public void quitDriver() {
-        baseAfter(getDriver());
-    }
 }

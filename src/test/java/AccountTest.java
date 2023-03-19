@@ -52,8 +52,4 @@ public class AccountTest extends BaseTest {
         assertEquals("Войти", loginPage.buttonEnterText());
     }
 
-    @After
-    public void quitDriver() {
-        baseAfter(getDriver());
-    }
 }

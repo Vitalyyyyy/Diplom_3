@@ -56,8 +56,5 @@ public class LoginPageTest extends BaseTest {
         assertEquals("Оформить заказ", mainPage.buttonCreateOrderText());
     }
 
-    @After
-    public void quitDriver() {
-        baseAfter(getDriver());
-    }
 }
+

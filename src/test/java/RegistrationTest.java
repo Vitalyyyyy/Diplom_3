@@ -1,4 +1,5 @@
 
+
 import com.github.javafaker.Faker;
 import jdk.jfr.Description;
 
@@ -8,6 +9,7 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.RegistrationPage;
@@ -16,7 +18,8 @@ import java.time.Duration;
 import static org.junit.Assert.assertEquals;
 
 public class RegistrationTest {
-    WebDriver driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions().addArguments("--remote-allow-origins=*");
+    WebDriver driver = new ChromeDriver(options);
     MainPage mainPage = new MainPage(driver);
     RegistrationPage registrationPage = new RegistrationPage(driver);
     LoginPage loginPage = new LoginPage(driver);

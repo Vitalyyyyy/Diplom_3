@@ -20,14 +20,19 @@ public class MainPage {
     private final By sauceButton = By.xpath(".//div/span[text()='Соусы']");
     // Кнопка Начинки в конструкторе
     private final By filingsButton = By.xpath(".//div/span[text()='Начинки']");
-    // Краторная булка
-    private final By creatorBread = By.xpath(".//p[text()='Краторная булка N-200i']");
-    // Соус Традиционный галактический
-    private final By galaxySauce = By.xpath(".//p[text()='Соус традиционный галактический']");
-    // Филе Люминесцентного тетраодонтимформа
-    private final By luminFiling = By.xpath(".//p[text()='Филе Люминесцентного тетраодонтимформа']");
+
+    // Текст активной вкладки
+    private static final By currentMenu = By.xpath("//div[contains(@class,'tab_tab__1SPyG tab_tab_type_current__2BEPc')]");
+
+    // Получение текста секций с элементами
+    private By textSectionBreads  = By.xpath("//h2[contains(text(),'Булки')]");
+    private By textSectionSauces  = By.xpath("//h2[contains(text(),'Соусы')]");
+    private By textSectionfillings  = By.xpath("//h2[contains(text(),'Начинки')]");
+
     private final WebDriver driver;
     private static final String url = "https://stellarburgers.nomoreparties.site/";
+
+
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -69,15 +74,18 @@ public class MainPage {
         driver.findElement(filingsButton).click();
     }
 
-    public String getTextCratorBread() {
-        return driver.findElement(creatorBread).getText();
+    public String getCurrentMenu() {
+        return driver.findElement(currentMenu).getText();
+    }
+    public String getTextSectionBreads() {
+        return driver.findElement(textSectionBreads).getText();
+    }
+    public String getTextSectionSauces() {
+        return driver.findElement(textSectionSauces).getText();
+    }
+    public String getTextSectionfillings() {
+        return driver.findElement(textSectionfillings).getText();
     }
 
-    public String getTextGalaxySauce() {
-        return driver.findElement(galaxySauce).getText();
-    }
 
-    public String getTextLuminFiling() {
-        return driver.findElement(luminFiling).getText();
-    }
 }

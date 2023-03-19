@@ -1,18 +1,19 @@
 import com.github.javafaker.Faker;
 
+import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pages.LoginPage;
 import pages.MainPage;
-
 
 import java.time.Duration;
 
 public class BaseTest {
-
-    private WebDriver driver = new ChromeDriver();
-    private final String loginEmail = "msmirnov016@mail.ru";
-    private final String loginPassword = "123456";
+    ChromeOptions options = new ChromeOptions().addArguments("--remote-allow-origins=*");
+    private WebDriver driver = new ChromeDriver(options);
+    private final String loginEmail = "Vitaly@mail.ru";
+    private final String loginPassword = "1234567";
     Faker faker = new Faker();
 
     private final String email = faker.internet().emailAddress();
@@ -62,7 +63,8 @@ public class BaseTest {
         mainPage.clickEnterButton();
     }
 
-    public void baseAfter(WebDriver driver) {
+    @After
+    public void baseAfter() {
         driver.quit();
     }
 }
